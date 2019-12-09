@@ -134,22 +134,25 @@
                             <tbody>
                                 @foreach (var b in ViewBag.Phones)
                                 {
-                                <tr class="row100">
-                                    <td><input type="checkbox" id="phone" name="PhoneID" value="@b.Id" class="custom-checkbox chkCheckBoxId" onclick="phonecheck()" /></td>
-                                    <td class="column100 column1" data-column="column1"><p>@b.Id</p></td>
-                                    <td class="column100 column2" data-column="column2"><p>@b.Name</p></td>
-                                    <td class="column100 column3" data-column="column3"><p>@b.Surname</p></td>
-                                    <td class="column100 column4" data-column="column4"><p>@b.Number</p></td>
-                                    <td class="column100 column5" data-column="column5"><p>@b.Email</p></td>
-                                    <td class="column100 column6" data-column="column6"><p>@b.GId</p></td>
-                                    <td class="column100 column6" data-column="column6"><p>@b.UId</p></td>
-                                    <td>@Html.ActionLink("Изменить", "EditPhone", new { id = @b.Id })</td>
-                                </tr>
+                                    <tr class="row100">
+                                        <td><input type="checkbox" id="phone" name="PhoneID" value="@b.Id" class="custom-checkbox chkCheckBoxId" onclick="phonecheck()" /></td>
+                                        <td class="column100 column1" data-column="column1"><p>@b.Id</p></td>
+                                        <td class="column100 column2" data-column="column2"><p>@b.Name</p></td>
+                                        <td class="column100 column3" data-column="column3"><p>@b.Surname</p></td>
+                                        <td class="column100 column4" data-column="column4"><p>@b.Number</p></td>
+                                        <td class="column100 column5" data-column="column5"><p>@b.Email</p></td>
+                                        <td class="column100 column6" data-column="column6"><p>@b.GId</p></td>
+                                        <td class="column100 column6" data-column="column6"><p>@b.UId</p></td>
+                                        <td>@Html.ActionLink("Изменить", "EditPhone", new { id = @b.Id })</td>
+                                    </tr>
                                 }
                             </tbody>
                         </table>
                     </div>
 
+                    <button type="submit" value="Delete" class="btn btn-sm btn-danger rounded-0" onclick="return confirm('Вы уверены?')"><i class="fa fa-trash-o"></i> Delete</button>
+                    <br />
+                    <br />
                     <div id="userclass" class="table100 ver6 m-b-110">
                         <table id="UserTable" style="width:100%;" class="table">
                             <thead>
@@ -158,7 +161,7 @@
                                     <th class="column100 column1" data-column="column1">Id</th>
                                     <th class="column100 column2" data-column="column2">Название</th>
                                     <th class="column100 column3" data-column="column3">Пароль</th>
-                                    <th class="column100 column4" data-column="column4">Возраст</th>
+                                    @*<th class="column100 column4" data-column="column4">Возраст</th>*@
                                     <th class="column100 column5" data-column="column5">ID Роли</th>
                                 </tr>
                             </thead>
@@ -170,7 +173,7 @@
                                         <td class="column100 column1" data-column="column1">@u.Id</td>
                                         <td class="column100 column2" data-column="column2">@u.Email</td>
                                         <td class="column100 column3" data-column="column3">@u.Password</td>
-                                        <td class="column100 column4" data-column="column4">@u.Age</td>
+                                        @*<td class="column100 column4" data-column="column4">@u.Age</td>*@
                                         <td class="column100 column5" data-column="column5">@u.RoleId</td>
                                         <td>@Html.ActionLink("Изменить", "EditUser", new { id = @u.Id })</td>
                                     </tr>
@@ -179,6 +182,9 @@
                         </table>
                     </div>
 
+                    <button type="submit" value="Delete" class="btn btn-sm btn-danger rounded-0" onclick="return confirm('Вы уверены?')"><i class="fa fa-trash-o"></i> Delete</button>
+                    <br />
+                    <br />
                     <div id="roleclass" class="table100 ver6 m-b-110">
                         <table id="RoleTable" style="width:100%;" class="table">
                             <thead>
@@ -202,6 +208,9 @@
                         </table>
                     </div>
 
+                    <button type="submit" value="Delete" class="btn btn-sm btn-danger rounded-0" onclick="return confirm('Вы уверены?')"><i class="fa fa-trash-o"></i> Delete</button>
+                    <br />
+                    <br />
                     <div id="groupclass" class="table100 ver6 m-b-110">
                         <table id="GroupTable" style="width:100%;" class="table">
                             <thead>
@@ -209,17 +218,19 @@
                                     <th>Группы</th>
                                     <th class="column100 column1" data-column="column1">GId</th>
                                     <th class="column100 column2" data-column="column2">Название</th>
+                                    <th class="column100 column2" data-column="column2">UId</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach (var r in ViewBag.Groups)
                                 {
-                                    <tr class="row100">
-                                        <td><input type="checkbox" id="group" name="GroupID" value="@r.GId" class="custom-checkbox chkCheckBoxId" onclick="rolecheck()" /></td>
-                                        <td class="column100 column1" data-column="column1">@r.GId</td>
-                                        <td class="column100 column2" data-column="column2">@r.Name</td>
-                                        <td>@Html.ActionLink("Изменить", "EditGroup", new { id = @r.GId })</td>
-                                    </tr>
+                                <tr class="row100">
+                                    <td><input type="checkbox" id="group" name="GroupID" value="@r.GId" class="custom-checkbox chkCheckBoxId" onclick="rolecheck()" /></td>
+                                    <td class="column100 column1" data-column="column1">@r.GId</td>
+                                    <td class="column100 column2" data-column="column2">@r.Name</td>
+                                    <td class="column100 column2" data-column="column2">@r.UId</td>
+                                    <td>@Html.ActionLink("Изменить", "EditGroup", new { id = @r.GId })</td>
+                                </tr>
                                 }
                             </tbody>
                         </table>
